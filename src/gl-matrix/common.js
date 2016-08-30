@@ -31,7 +31,8 @@ glMatrix.RANDOM = Math.random;
 glMatrix.ENABLE_SIMD = false;
 
 // Capability detection
-glMatrix.SIMD_AVAILABLE = (glMatrix.ARRAY_TYPE === this.Float32Array) && ('SIMD' in this);
+const global = new Function('return this')();
+export const SIMD_AVAILABLE = (ARRAY_TYPE === global.Float32Array) && ('SIMD' in global);
 glMatrix.USE_SIMD = glMatrix.ENABLE_SIMD && glMatrix.SIMD_AVAILABLE;
 
 /**
